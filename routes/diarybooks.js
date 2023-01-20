@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as diarybookCtrl from '../controllers/diarybook.js'
+import * as diarybooksCtrl from '../controllers/diarybooks.js'
 import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 
 const router = Router()
@@ -9,6 +9,7 @@ const router = Router()
 
 // ========= Protected Routes ========= 
 router.use(decodeUserFromToken)
-
+router.post('/', checkAuth, diarybooksCtrl.create)
+router.get("/", checkAuth, diarybooksCtrl.index)
 
 export { router }
