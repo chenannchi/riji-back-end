@@ -12,7 +12,7 @@ const diarySchema = new Schema(
       type: String,
       required: true,
     },
-    music:{
+    music: {
       type: String,
     },
     author: { type: Schema.Types.ObjectId, ref: 'Profile' }
