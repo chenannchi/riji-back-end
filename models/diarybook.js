@@ -19,6 +19,6 @@ const diarybookSchema = new Schema(
   { timestamps: true }
 )
 
-const Diarybook = mongoose.model('Blog', blogSchema)
+const Diarybook = mongoose.model('Diarybook', diarybookSchema)
 
-export { Blog }
+export { Diarybook }
