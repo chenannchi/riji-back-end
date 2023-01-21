@@ -29,7 +29,18 @@ const index = async (req, res) => {
   }
 }
 
+const show = async (req, res) => {
+  try {
+    const diary = await Diary.findById(req.params.id)
+      .populate('author')
+    res.status(200).json(diary)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
+  show,
 }
