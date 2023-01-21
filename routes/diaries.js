@@ -13,6 +13,6 @@ router.post('/', checkAuth, diariesCtrl.create)
 router.get('/', checkAuth, diariesCtrl.index)
 router.get('/:id', checkAuth, diariesCtrl.show)
 router.put('/:id', checkAuth, diariesCtrl.update)
-router.delete(':id', checkAuth, diariesCtrl.delete)
+router.delete('/:id', checkAuth, diariesCtrl.delete)
 
 export { router }
