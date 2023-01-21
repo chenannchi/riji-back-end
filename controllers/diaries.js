@@ -18,6 +18,18 @@ const create = async (req, res) => {
   }
 }
 
+const index = async (req, res) => {
+  try {
+    const diaries = await Diary.find({})
+      .populate('author')
+      .sort({ createdAt: 'desc' })
+    res.status(200).json(diaries)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
+  index,
 }
