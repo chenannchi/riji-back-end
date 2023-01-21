@@ -29,9 +29,33 @@ const index = async (req, res) => {
   }
 }
 
-export {
-  create,
-  index
+const show = async (req, res) => {
+  try {
+    const diarybook = await Diarybook.findById(req.params.id)
+      .populate('owner')
+      // .populate('diaries')
+    res.status(200).json(diarybook)
+  } catch (error) {
+    res.status(500).json(error)
+  }
 }
 
-export { }
+const update = async (req, res) => {
+  try {
+    const diarybook = await Diarybook.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true }
+    ).populate('owner')
+    res.status(200).json(diarybook)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
+export {
+  create,
+  index,
+	show,
+  update,
+}

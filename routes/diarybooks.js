@@ -11,5 +11,7 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.post('/', checkAuth, diarybooksCtrl.create)
 router.get("/", checkAuth, diarybooksCtrl.index)
+router.get("/:id", checkAuth, diarybooksCtrl.show)
+router.put("/:id", checkAuth, diarybooksCtrl.update)
 
 export { router }
