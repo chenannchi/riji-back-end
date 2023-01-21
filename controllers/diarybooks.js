@@ -53,9 +53,22 @@ const update = async (req, res) => {
   }
 }
 
+const deleteDiarybook = async (req, res) => {
+  try {
+    const diarybook = await Diarybook.findByIdAndDelete(req.params.id)
+    const profile = await Profile.findById(req.user.profile)
+    profile.diarybooks.remove({ _id: req.params.id })
+    await profile.save()
+    res.status(200).json(diarybook)
+  } catch (error) {
+    res.status(500).json(error)
+  }
+}
+
 export {
   create,
   index,
-	show,
+  show,
   update,
+  deleteDiarybook as delete
 }
