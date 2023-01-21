@@ -3,14 +3,14 @@ import { Diarybook } from "../models/diarybook.js"
 
 const create = async (req, res) => {
   try {
-    req.body.owner = req.user.profile
+    req.body.owner = [req.user.profile]
     const diarybook = await Diarybook.create(req.body)
     const profile = await Profile.findByIdAndUpdate(
       req.user.profile,
       { $push: { diarybooks: diarybook } },
       { new: true }
     )
-    diarybook.owner = profile
+    // diarybook.owner = profile
     res.status(201).json(diarybook)
   } catch (error) {
     console.log(error)
