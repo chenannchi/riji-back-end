@@ -35,7 +35,7 @@ const show = async (req, res) => {
   try {
     const diarybook = await Diarybook.findById(req.params.id)
       .populate('owner')
-      // .populate('diaries')
+      .populate('diaries')
     res.status(200).json(diarybook)
   } catch (error) {
     res.status(500).json(error)
