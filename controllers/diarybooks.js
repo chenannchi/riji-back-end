@@ -67,7 +67,7 @@ const deleteDiarybook = async (req, res) => {
   }
 }
 
-const addToDiarybook = async (req, res) => {
+const addDiaryToDiarybook = async (req, res) => {
   try {
     const diary = await Diary.findById(req.params.diaryId)
     const diarybook = await Diarybook.findByIdAndUpdate(
@@ -82,7 +82,7 @@ const addToDiarybook = async (req, res) => {
   }
 }
 
-const deleteFromDiarybook = async (req, res) => {
+const deleteDiaryFromDiarybook = async (req, res) => {
   try {
     // const diarybook = await Diarybook.findByIdAndDelete(req.params.id)
     const diarybook = await Diarybook.findById(req.params.id)
@@ -100,6 +100,6 @@ export {
   show,
   update,
   deleteDiarybook as delete,
-  addToDiarybook,
-  deleteFromDiarybook
+  addDiaryToDiarybook,
+  deleteDiaryFromDiarybook
 }
