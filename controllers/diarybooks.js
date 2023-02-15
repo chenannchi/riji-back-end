@@ -20,7 +20,7 @@ const create = async (req, res) => {
   }
 }
 
-const index = async (res) => {
+const index = async (req, res) => {
   try {
     const diarybooks = await Diarybook.find({})
       // .populate('owner')
